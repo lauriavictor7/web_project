@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_main"
+            android:icon="@drawable/ic_main_grey_24dp"
+            android:title="Principal" />
+        <item
+            android:id="@+id/nav_mPlaces"
+            android:icon="@drawable/ic_places_grey_24dp"
+            android:title="Seus Lugares" />
+        <item
+            android:id="@+id/nav_user"
+            android:icon="@drawable/ic_user_grey_24dp"
+            android:title="Preferências de Usuário" />
+
+    </group>
+
+    <item android:title="Fale Conosco">
+        <menu>
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_contact_grey_24dp"
+                android:title="Contato" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_about_grey_24dp"
+                android:title="Sobre" />
+        </menu>
+    </item>
+
+</menu>
