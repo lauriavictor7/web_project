@@ -11,7 +11,7 @@
         <item
             android:id="@+id/nav_mPlaces"
             android:icon="@drawable/ic_places_grey_24dp"
-            android:title="Seus Lugares" />
+            android:title="Encontre Lugares" />
         <item
             android:id="@+id/nav_user"
             android:icon="@drawable/ic_user_grey_24dp"

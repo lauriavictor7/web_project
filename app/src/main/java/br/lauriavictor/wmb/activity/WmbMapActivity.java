@@ -285,7 +285,7 @@ public class WmbMapActivity extends AppCompatActivity implements OnMapReadyCallb
     private void moveCamera(LatLng latLng, float zoom, PlaceInfo placeInfo) {
         Log.d(TAG, "moveCamera: movendo a camera para: lat: " + latLng.latitude + ", long: " + latLng.longitude);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
-        mMap.clear(); //Limpa todos os marcadores do mapa
+        mMap.clear(); //Clear all markers on map
 
         mMap.setInfoWindowAdapter(new CustomWindowViewAdapter(WmbMapActivity.this));
 
@@ -310,7 +310,7 @@ public class WmbMapActivity extends AppCompatActivity implements OnMapReadyCallb
     private void moveCamera(LatLng latLng, float zoom, String title) {
         Log.d(TAG, "moveCamera: movendo a camera para: lat: " + latLng.latitude + ", long: " + latLng.longitude);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
-        //Se no marker não contiver "Minha localização" de titulo, adiciona um marker
+        //If the marker does not contain "My Location" title, add a marker
         if(!title.equals("Minha localização")) {
             MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(title);
             mMap.addMarker(markerOptions);
@@ -422,10 +422,10 @@ public class WmbMapActivity extends AppCompatActivity implements OnMapReadyCallb
 
                 Log.d(TAG, "onResult: " + mPlaceInfo.toString());
 
-                Log.d(TAG, "onResult: passou por aqui1");
-                DatabaseController databaseController = new DatabaseController(getApplicationContext());
-                databaseController.insertPlace(mPlaceInfo);
-                Log.d(TAG, "onResult: passou por aqui 2.");
+               // Log.d(TAG, "onResult: passou por aqui1");
+               // DatabaseController databaseController = new DatabaseController(getApplicationContext());
+                //databaseController.insertPlace(mPlaceInfo);
+               // Log.d(TAG, "onResult: passou por aqui 2.");
                 
             } catch (NullPointerException e) {
                 Log.d(TAG, "onResult: NullPointerException: " + e.getMessage());

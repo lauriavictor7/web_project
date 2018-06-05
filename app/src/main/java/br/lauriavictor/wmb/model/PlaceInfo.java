@@ -41,6 +41,18 @@ public class PlaceInfo implements Parcelable {
         rating = in.readFloat();
     }
 
+    public static final Creator<PlaceInfo> CREATOR = new Creator<PlaceInfo>() {
+        @Override
+        public PlaceInfo createFromParcel(Parcel in) {
+            return new PlaceInfo(in);
+        }
+
+        @Override
+        public PlaceInfo[] newArray(int size) {
+            return new PlaceInfo[size];
+        }
+    };
+
     @Override
     public int describeContents() {
         return 0;

@@ -219,7 +219,8 @@ public class WmbMainActivity extends AppCompatActivity
             startActivity(new Intent(this, WmbSaveUserActivity.class));
 
         } else if (id == R.id.nav_contact) {
-            sendEmail();
+            //sendEmail();
+           startActivity(new Intent(this, WmbAddPlace.class));
 
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(this, WmbAboutActivity.class));
