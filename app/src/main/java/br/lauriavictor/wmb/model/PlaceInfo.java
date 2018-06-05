@@ -1,10 +1,12 @@
 package br.lauriavictor.wmb.model;
 
 import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.android.gms.maps.model.LatLng;
 
-public class PlaceInfo {
+public class PlaceInfo implements Parcelable {
 
     private String name;
     private String address;
@@ -29,6 +31,28 @@ public class PlaceInfo {
 
     public PlaceInfo() {
 
+    }
+
+    public PlaceInfo(Parcel in) {
+        name = in.readString();
+        address = in.readString();
+        phoneNumber = in.readString();
+        id = in.readString();
+        rating = in.readFloat();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(address);
+        dest.writeString(phoneNumber);
+        dest.writeString(id);
+        dest.writeFloat(rating);
     }
 
     public String getName() {

@@ -1,6 +1,7 @@
 package br.lauriavictor.wmb.activity;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -53,11 +55,14 @@ import java.util.List;
 
 import br.lauriavictor.wmb.R;
 import br.lauriavictor.wmb.model.CustomWindowViewAdapter;
+import br.lauriavictor.wmb.model.DatabaseController;
 import br.lauriavictor.wmb.model.PlaceAutoCompleteAdapter;
 import br.lauriavictor.wmb.model.PlaceInfo;
+import br.lauriavictor.wmb.model.User;
 
 public class WmbMapActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener {
+
 
     private static final String TAG = "WmbMapActivity";
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
@@ -68,7 +73,7 @@ public class WmbMapActivity extends AppCompatActivity implements OnMapReadyCallb
     private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(new LatLng(-40, -168), new LatLng(71, 136));
 
     private AutoCompleteTextView mSearchText;
-    private ImageView mLocation, mInfo, mPlacePicker;
+    private ImageView mLocation, mInfo, mPlacePicker, mFavoritePlace;
 
     private Boolean mLocationPermissionGranted = false;
     private GoogleMap mMap;
@@ -92,6 +97,7 @@ public class WmbMapActivity extends AppCompatActivity implements OnMapReadyCallb
         mLocation = (ImageView) findViewById(R.id.ic_gps);
         mInfo = (ImageView) findViewById(R.id.place_info);
         mPlacePicker = (ImageView) findViewById(R.id.place_picket);
+        mFavoritePlace = (ImageView) findViewById(R.id.ic_fav);
 
         getLocationPermission();
     }
@@ -166,6 +172,28 @@ public class WmbMapActivity extends AppCompatActivity implements OnMapReadyCallb
                 }
             }
         });
+
+        //Adding place to favorites
+        mFavoritePlace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseController databaseController;
+                try {
+                    databaseController = new DatabaseController(getBaseContext());
+                    //PlaceInfo placeInfo = new PlaceInfo();
+                    mPlaceInfo.setName(mPlaceInfo.getName());
+                    mPlaceInfo.setAddress(mPlaceInfo.getAddress());
+                    mPlaceInfo.setPhoneNumber(mPlaceInfo.getPhoneNumber());
+                    mPlaceInfo.setRating(mPlaceInfo.getRating());
+                    databaseController.insertPlace(mPlaceInfo);
+                    Log.d(TAG, "validatePlace: lugar cadastrado.");
+                    Toast.makeText(getApplicationContext(), "Lugar salvo! ", Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Log.d(TAG, "validateUser: lugar não cadastrado");
+                    e.printStackTrace();
+                }
+            }
+        });
         //searchNearby();
         hideKeyboard();
     }
@@ -235,7 +263,7 @@ public class WmbMapActivity extends AppCompatActivity implements OnMapReadyCallb
                 location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
-                        if(task.isSuccessful()) {
+                        if(task.isSuccessful() && task.getResult() != null) {
                             Log.d(TAG, "onComplete: localização encontrada!");
                             Location currentLocation = (Location) task.getResult();
                             moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
@@ -333,9 +361,9 @@ public class WmbMapActivity extends AppCompatActivity implements OnMapReadyCallb
                             return;
                         }
                     }
-                    Log.d(TAG, "onRequestPermissionsResult: permissão condedida.");
+                    Log.d(TAG, "onRequestPermissionsResult: permissão concedida.");
                     mLocationPermissionGranted = true;
-                    //iniciando o mapa, porque as permissões foram todas condedidas
+                    //starting the map, because the permissions were all granted
                     initMap();
                 }
             }
@@ -393,6 +421,11 @@ public class WmbMapActivity extends AppCompatActivity implements OnMapReadyCallb
                 Log.d(TAG, "onResult: uri " + place.getWebsiteUri());
 
                 Log.d(TAG, "onResult: " + mPlaceInfo.toString());
+
+                Log.d(TAG, "onResult: passou por aqui1");
+                DatabaseController databaseController = new DatabaseController(getApplicationContext());
+                databaseController.insertPlace(mPlaceInfo);
+                Log.d(TAG, "onResult: passou por aqui 2.");
                 
             } catch (NullPointerException e) {
                 Log.d(TAG, "onResult: NullPointerException: " + e.getMessage());

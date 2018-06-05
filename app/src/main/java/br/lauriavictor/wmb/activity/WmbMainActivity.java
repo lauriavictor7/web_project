@@ -80,7 +80,19 @@ public class WmbMainActivity extends AppCompatActivity
         addUser = (Button) findViewById(R.id.buttonAdd2);
     }
 
-    //Checando versão do google services
+    public void init() {
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.nav_mPlaces);
+        drawerLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WmbMainActivity.this, WmbMapActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+    //checando versão do google services
     public boolean isServicesOK() {
         Log.d(TAG, "isServicesOK: checando versão do google services");
         int avaliable = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(WmbMainActivity.this);
