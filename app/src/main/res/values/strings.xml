@@ -13,4 +13,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_wmb_save_user">WmbSaveUser</string>
     <string name="title_activity_wmb_add_place">WmbAddPlace</string>
+    <string name="title_activity_tab">TabActivity</string>
+
+    <string-array name="titlesTab">
+        <item>Seus lugares</item>
+        <item>Indefindo</item>
+    </string-array>
 </resources>

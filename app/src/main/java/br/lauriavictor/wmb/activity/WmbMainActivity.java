@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.*;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -24,6 +25,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.support.design.widget.TabLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -32,7 +34,9 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import java.io.InputStream;
 
 import br.lauriavictor.wmb.R;
+import br.lauriavictor.wmb.fragment.FragmentList;
 import br.lauriavictor.wmb.fragment.MainFragment;
+import br.lauriavictor.wmb.model.ViewPagerAdapter;
 
 public class WmbMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +46,7 @@ public class WmbMainActivity extends AppCompatActivity
     //ListView listUser;
     Button addUser;
     Uri imgUri = Uri.parse("android.resource://br.lauriavictor/drawable/ic_user_grey_24dp");
+
     boolean camera;
     private Bitmap bitmap;
     private static final String TAG = "WmbMainActivity";
@@ -220,7 +225,7 @@ public class WmbMainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_contact) {
             //sendEmail();
-           startActivity(new Intent(this, WmbAddPlace.class));
+           startActivity(new Intent(this, WmbListPlaceActivity.class));
 
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(this, WmbAboutActivity.class));
