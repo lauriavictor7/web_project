@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import br.lauriavictor.wmb.R;
-import br.lauriavictor.wmb.fragment.FragmentList;
+import br.lauriavictor.wmb.fragment.ListPlaceFragment;
 import br.lauriavictor.wmb.model.ViewPagerAdapter;
 
 public class WmbListPlaceActivity extends AppCompatActivity {
@@ -25,8 +25,8 @@ public class WmbListPlaceActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        viewPagerAdapter.AddFragment(new FragmentList(), "Seus lugares");
-        viewPagerAdapter.AddFragment(new FragmentList(), "Seus dados");
+        viewPagerAdapter.AddFragment(new ListPlaceFragment(), "Seus lugares");
+        viewPagerAdapter.AddFragment(new ListPlaceFragment(), "Seus dados");
 
         viewPager.setAdapter(viewPagerAdapter);
         tableLayout.setupWithViewPager(viewPager);

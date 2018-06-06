@@ -111,9 +111,8 @@ public class DatabaseController {
             do {
                 PlaceInfo placeInfo = new PlaceInfo();
                 placeInfo.setName(cursor.getString(cursor.getColumnIndex(mDataBaseHelper.COLUMN_NAME_PLACE)));
-                placeInfo.setAddress(cursor.getString(cursor.getColumnIndex(mDataBaseHelper.COLUMN_ADDRESS)));
                 placeInfo.setPhoneNumber(cursor.getString(cursor.getColumnIndex(mDataBaseHelper.COLUMN_PHONE)));
-                placeInfo.setRating(cursor.getFloat(cursor.getColumnIndex(mDataBaseHelper.COLUMN_RATING)));
+                placeInfo.setAddress((cursor.getString(cursor.getColumnIndex(mDataBaseHelper.COLUMN_ADDRESS))));
 
                 placeInfos.add(placeInfo);
             } while (cursor.moveToNext());
