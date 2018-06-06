@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.lauriavictor.wmb.fragment.ListPlaceFragment;
+
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private final List<Fragment> fragmentList = new ArrayList<>();

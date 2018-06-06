@@ -68,7 +68,7 @@ public class DatabaseController {
         return user;
     }
 
-    public ArrayList<User> listAll() {
+    public ArrayList<User> listAllUsers() {
         ArrayList<User> users = new ArrayList<>();
         mSqLiteDatabase = mDataBaseHelper.getReadableDatabase();
         Cursor cursor = mSqLiteDatabase.rawQuery("SELECT * FROM " + mDataBaseHelper.TB_NAME, null);
