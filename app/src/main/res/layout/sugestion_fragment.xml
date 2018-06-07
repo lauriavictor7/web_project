@@ -14,7 +14,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:hint="Suas sugestões apareceram aqui, pressione o botão!"
-            android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/buttonShowJson"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

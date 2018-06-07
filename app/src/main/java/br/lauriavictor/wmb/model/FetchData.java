@@ -39,7 +39,10 @@ public class FetchData extends AsyncTask<Void, Void, Void> {
             JSONArray jsonArray = new JSONArray(data);
             for(int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-
+                singleParsed = "Nome: " + jsonObject.get("name") + "\n" +
+                               "Telfone: " + jsonObject.get("phone") + "\n" +
+                               "Endereço: " + jsonObject.get("address") + "\n\n";
+                dataParsed = dataParsed + singleParsed;
             }
 
         } catch (MalformedURLException e) {
@@ -56,6 +59,6 @@ public class FetchData extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        SugestionPlacesFragment.mContent.setText(this.data);
+        SugestionPlacesFragment.mContent.setText(this.dataParsed);
     }
 }
