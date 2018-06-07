@@ -211,10 +211,10 @@ public class WmbMainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_user) {
             startActivity(new Intent(this, WmbListPlaceActivity.class));
-            //startActivity(new Intent(this, WmbSaveUserActivity.class));
 
         } else if (id == R.id.nav_contact) {
-            sendEmail();
+            startActivity(new Intent(this, WmbSaveUserActivity.class));
+            //sendEmail();
 
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(this, WmbAboutActivity.class));

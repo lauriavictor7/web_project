@@ -19,12 +19,12 @@
 
     </group>
 
-    <item android:title="Fale Conosco">
+    <item android:title="Extras">
         <menu>
             <item
                 android:id="@+id/nav_contact"
-                android:icon="@drawable/ic_contact_grey_24dp"
-                android:title="Contato" />
+                android:icon="@drawable/ic_person_add_grey_24dp"
+                android:title="Cadastre-se" />
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_about_grey_24dp"
