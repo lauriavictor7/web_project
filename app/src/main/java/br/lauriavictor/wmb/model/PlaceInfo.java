@@ -11,13 +11,13 @@ public class PlaceInfo implements Parcelable {
     private String name;
     private String address;
     private String phoneNumber;
-    private String id;
+    public int id;
     private Uri websiteUri;
     private LatLng latLng;
     private float rating;
     private String attribuitions;
 
-    public PlaceInfo(String name, String address, String phoneNumber, String id, Uri websiteUri, LatLng latLng,
+    public PlaceInfo(String name, String address, String phoneNumber, int id, Uri websiteUri, LatLng latLng,
                      float rating, String attribuitions) {
         this.name = name;
         this.address = address;
@@ -37,7 +37,7 @@ public class PlaceInfo implements Parcelable {
         name = in.readString();
         address = in.readString();
         phoneNumber = in.readString();
-        id = in.readString();
+        id = in.readInt();
         rating = in.readFloat();
     }
 
@@ -63,7 +63,7 @@ public class PlaceInfo implements Parcelable {
         dest.writeString(name);
         dest.writeString(address);
         dest.writeString(phoneNumber);
-        dest.writeString(id);
+        dest.writeInt(id);
         dest.writeFloat(rating);
     }
 
@@ -91,11 +91,11 @@ public class PlaceInfo implements Parcelable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

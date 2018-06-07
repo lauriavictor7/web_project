@@ -27,7 +27,7 @@ public class WmbListPlaceActivity extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         viewPagerAdapter.AddFragment(new ListPlaceFragment(), "Seus lugares");
-        viewPagerAdapter.AddFragment(new CallFragment(), "Seus dados");
+        viewPagerAdapter.AddFragment(new CallFragment(), "Atualize seus dados");
 
         viewPager.setAdapter(viewPagerAdapter);
         tableLayout.setupWithViewPager(viewPager);

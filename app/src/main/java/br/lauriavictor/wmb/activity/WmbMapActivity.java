@@ -409,7 +409,7 @@ public class WmbMapActivity extends AppCompatActivity implements OnMapReadyCallb
                 Log.d(TAG, "onResult: name " + place.getName());
                 mPlaceInfo.setAddress(place.getAddress().toString());
                 Log.d(TAG, "onResult: Adress " + place.getAddress());
-                mPlaceInfo.setId(place.getId().toString());
+               // mPlaceInfo.setId(place.getId());
                 Log.d(TAG, "onResult: Id " + place.getId());
                 mPlaceInfo.setLatLng(place.getLatLng());
                 Log.d(TAG, "onResult: latlng " + place.getLatLng());

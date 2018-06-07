@@ -36,7 +36,7 @@ public class DatabaseController {
         contentValues.put(mDataBaseHelper.COLUMN_NAME, user.getName());
         contentValues.put(mDataBaseHelper.COLUMN_EMAIL, user.getEmail());
         contentValues.put(mDataBaseHelper.COLUMN_PASSWORD, user.getPassword());
-        contentValues.put(mDataBaseHelper.COLUMN_PHOTO, user.getPhoto());
+        //contentValues.put(mDataBaseHelper.COLUMN_PHOTO, user.getPhoto());
 
         mSqLiteDatabase.update(mDataBaseHelper.TB_NAME, contentValues, mDataBaseHelper.COLUMN_ID
                 + " = ? ", new String[]{Integer.toString(user.getId())});
@@ -118,5 +118,11 @@ public class DatabaseController {
             } while (cursor.moveToNext());
         }
         return placeInfos;
+    }
+
+    public Integer removePlace(PlaceInfo placeInfo) {
+        mSqLiteDatabase = mDataBaseHelper.getWritableDatabase();
+        return mSqLiteDatabase.delete(mDataBaseHelper.TB_NAME_PLACE, mDataBaseHelper.COLUMN_ID_PLACE + " = ? ",
+                new String[]{Integer.toString(placeInfo.getId())});
     }
 }

@@ -63,7 +63,6 @@ public class WmbMainActivity extends AppCompatActivity
             }
         });
 
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -74,7 +73,7 @@ public class WmbMainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         edtName = (EditText) findViewById(R.id.editTextName);
-        edtEmail = (EditText) findViewById(R.id.editTextEmail);
+        edtEmail = (EditText) findViewById(R.id.editTextEmailUpdate);
         edtPW = (EditText) findViewById(R.id.editTextPw);
         //listUser = (ListView) findViewById(R.id);
         //imgUser = (ImageView) findViewById(R.id.ivUser);
@@ -202,26 +201,20 @@ public class WmbMainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_main) {
-
             MainFragment mainFragment = new MainFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameContainer, mainFragment);
             fragmentTransaction.commit();
 
-
         } else if (id == R.id.nav_mPlaces) {
-            /*PlacesFragment placesFragment = new PlacesFragment();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frameContainer, placesFragment);
-            fragmentTransaction.commit();*/
             startActivity(new Intent(this, WmbMapActivity.class));
 
         } else if (id == R.id.nav_user) {
-            startActivity(new Intent(this, WmbSaveUserActivity.class));
+            startActivity(new Intent(this, WmbListPlaceActivity.class));
+            //startActivity(new Intent(this, WmbSaveUserActivity.class));
 
         } else if (id == R.id.nav_contact) {
-            //sendEmail();
-           startActivity(new Intent(this, WmbListPlaceActivity.class));
+            sendEmail();
 
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(this, WmbAboutActivity.class));

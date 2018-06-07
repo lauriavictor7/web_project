@@ -7,8 +7,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -49,7 +47,7 @@ public class WmbSaveUserActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mName = (EditText) findViewById(R.id.editTextName);
-        mEmail = (EditText) findViewById(R.id.editTextEmail);
+        mEmail = (EditText) findViewById(R.id.editTextEmailUpdate);
         mPassword = (EditText) findViewById(R.id.editTextPw);
         mCamera = (ImageView) findViewById(R.id.ic_cam);
         mButtonAddUser = (Button) findViewById(R.id.buttonAdd2);
