@@ -8,6 +8,7 @@ import android.os.Bundle;
 import br.lauriavictor.wmb.R;
 import br.lauriavictor.wmb.fragment.CallFragment;
 import br.lauriavictor.wmb.fragment.ListPlaceFragment;
+import br.lauriavictor.wmb.fragment.SugestionPlacesFragment;
 import br.lauriavictor.wmb.model.ViewPagerAdapter;
 
 public class WmbListPlaceActivity extends AppCompatActivity {
@@ -27,7 +28,9 @@ public class WmbListPlaceActivity extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         viewPagerAdapter.AddFragment(new ListPlaceFragment(), "Seus lugares");
+        viewPagerAdapter.AddFragment(new SugestionPlacesFragment(), "Sugestões para você");
         viewPagerAdapter.AddFragment(new CallFragment(), "Atualize seus dados");
+
 
         viewPager.setAdapter(viewPagerAdapter);
         tableLayout.setupWithViewPager(viewPager);
